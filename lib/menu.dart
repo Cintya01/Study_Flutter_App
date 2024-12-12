@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mi_primera_app/entrada_de_datos/in_datos.dart';
 import 'package:mi_primera_app/galeria_imagenes/galeria_imagenes.dart';
 import 'package:mi_primera_app/gestor-habitos/home_hab.dart';
+import 'package:mi_primera_app/reproductor_audio/reproductor_audio.dart';
+import 'package:mi_primera_app/reproductor_audio/reproductor_profe.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -34,13 +36,27 @@ class Menu extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  GaleriaImagenesPage()));
+                        builder: (context) => const GaleriaImagenesPage()));
               },
               child: const Text("Galeria de Imágenes"),
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: const Text("Reproductor de audio"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AudioPlayerProfe()));
+              },
+              child: const Text("Reproductor de Audio"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AudioPlayerPage()));
+              },
+              child: const Text("Reproductor de Audio Mio"),
             ),
             ElevatedButton(
               onPressed: () {},
