@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mi_primera_app/bloc/todo_bloc_ejercicio.dart';
 import 'package:mi_primera_app/entrada_de_datos/in_datos.dart';
 import 'package:mi_primera_app/galeria_imagenes/galeria_imagenes.dart';
 import 'package:mi_primera_app/gestor-habitos/home_hab.dart';
+import 'package:mi_primera_app/reproductor_audio/re-profe-dos.dart';
 import 'package:mi_primera_app/reproductor_audio/reproductor_audio.dart';
 import 'package:mi_primera_app/reproductor_audio/reproductor_profe.dart';
+import 'package:mi_primera_app/stack_pruebas/stack_pruebas.dart';
+import 'package:mi_primera_app/todo_block/todo_blocClass.dart';
+import 'package:mi_primera_app/todo_provider/todo_provider.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -45,7 +50,7 @@ class Menu extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AudioPlayerProfe()));
+                        builder: (context) => const AudioProfe()));
               },
               child: const Text("Reproductor de Audio"),
             ),
@@ -54,16 +59,26 @@ class Menu extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AudioPlayerPage()));
+                        builder: (context) => const StackPageTest()));
               },
-              child: const Text("Reproductor de Audio Mio"),
+              child: const Text("Stack Test Page"),
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: const Text("To Do - Provider"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TodoProvider()));
+              },
+              child: const Text("TodoProvider"),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TodoBlocPage()));
+              },
               child: const Text("To Do - Bloc"),
             ),
           ],
