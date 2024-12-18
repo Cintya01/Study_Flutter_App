@@ -3,7 +3,7 @@ class AnimalModel {
   final String name;
   final String breed;
   final int age;
-  final int imageUrl;
+  final String imageUrl;
   final String species;
   final bool isFavorite;
 

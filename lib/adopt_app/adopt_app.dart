@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mi_primera_app/adopt_app/bloc/animal_bloc.dart';
+import 'package:mi_primera_app/adopt_app/favorite_page.dart';
 import 'package:mi_primera_app/adopt_app/widgets/adopt_appbar.dart';
 import 'package:mi_primera_app/adopt_app/widgets/adopt_filter.dart';
 import 'package:mi_primera_app/adopt_app/widgets/adopt_list.dart';
@@ -11,7 +12,7 @@ class AdoptAppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AnimalBloc(),
+      create: (context) => AnimalBloc()..add(LoadAnimalEvent()),
       child: const Body(),
     );
   }
@@ -31,13 +32,14 @@ class Body extends StatelessWidget {
           AdoptListWidget(),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.read<AnimalBloc>().add(LoadAnimalEvent());
-        },
-        child: const Icon(Icons.add),
-      ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        onTap: (index) {
+          if(index == 1){
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => const FavoritePage()));
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),

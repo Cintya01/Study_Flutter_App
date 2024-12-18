@@ -28,12 +28,16 @@ class AdoptListWidget extends StatelessWidget {
             } else if (state.screenState == AnimalScreenState.sucess) {
               return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: state.animals.length,
                 itemBuilder: (BuildContext context, int index) {
+                  final animal = state.animals[index];
                   return buildCard(
-                    name: "Murzik",
-                    breed: "Maine Coon Cat",
-                    age: 3,
+                    name: animal.name,
+                    breed: animal.breed,
+                    age: animal.age,
+                    isFavorite: animal.isFavorite,
+                    context: context,
+                    animalId: animal.id,
                   );
                 },
               );
@@ -49,9 +53,12 @@ class AdoptListWidget extends StatelessWidget {
   }
 
   Widget buildCard({
+    required String animalId,
     required String name,
     required String breed,
     required int age,
+    required bool isFavorite,
+    required BuildContext context,
   }) {
     return Container(
       width: 260,
@@ -101,10 +108,15 @@ class AdoptListWidget extends StatelessWidget {
           ),
           // Fav
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_border,
+            onPressed: () {
+              context
+                  .read<AnimalBloc>()
+                  .add(ToggleFavoriteAnimalEvent(animalId));
+            },
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
               size: 40,
+              color: isFavorite ? Colors.red : Colors.grey,
             ),
           ),
         ],
