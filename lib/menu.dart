@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_primera_app/adopt_app/adopt_app.dart';
 import 'package:mi_primera_app/bloc/todo_bloc_ejercicio.dart';
 import 'package:mi_primera_app/entrada_de_datos/in_datos.dart';
 import 'package:mi_primera_app/galeria_imagenes/galeria_imagenes.dart';
@@ -80,6 +81,15 @@ class Menu extends StatelessWidget {
                         builder: (context) => const TodoBlocPage()));
               },
               child: const Text("To Do - Bloc"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AdoptAppPage()));
+              },
+              child: const Text("Adopt App"),
             ),
           ],
         ),
